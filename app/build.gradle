@@ -27,14 +27,29 @@ android {
                     0 : grgit.describe(commit: grgit.head(), tags: true).split('-')[1]
         }"""
 
-        versionCode tagSize*10 + patch.toInteger()
+        //versionCode tagSize*10 + patch.toInteger()
+        versionCode major.toInteger()*10000 + minor.toInteger() * 100 + patch.toInteger()
         versionName "${major}.${minor}.${patch}"
-        new File(projectDir, "version.txt").text = """versionName $versionName\nversionCode $versionCode"""
+
+        new File(projectDir, "version.txt").text = """$major.$minor.$patch\n$versionCode """
+
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs{
+        release{
+            storeFile file("C:\\Users\\ASUS\\keystore\\.jks")
+            storePassword "2508a2508"
+            keyAlias "key0"
+            keyPassword "25082508"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

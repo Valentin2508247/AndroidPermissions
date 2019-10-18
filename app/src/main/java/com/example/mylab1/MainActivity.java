@@ -23,15 +23,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView version = findViewById(R.id.version);
+        version.setText("Current version: " + BuildConfig.VERSION_NAME);
 
         int permissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
         if (permissionStatus == PackageManager.PERMISSION_GRANTED) {
             SetId();
         } else {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE))
+            /*if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE))
             {
                 //Toast.makeText(this, R.string.message, Toast.LENGTH_LONG).show();
-            }
+            }*/
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_PHONE_STATE},
                     REQUEST_READ_PHONE_STATE);
         }
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        text.setText(id);
+        text.setText("Device id is " + id);
 
     }
 

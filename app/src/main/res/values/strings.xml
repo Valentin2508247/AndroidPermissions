@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MyLab1</string>
     <string name="message">Разрешение требуется для получения уникального идентификатора вашего устройства</string>
+    <string name="some_name">Some text</string>
 </resources>
