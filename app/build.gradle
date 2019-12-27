@@ -27,9 +27,8 @@ android {
         //othervise returns tag
 
 
-        def str = grgit.describe(tags:true)
-        new File(projectDir, "version.txt").text = str
-
+        def str2 = grgit.describe(tags:true)
+        new File(projectDir, "version.txt").text = str2
         def patch = (grgit.describe(tags: true) == lastTagName ?
                 0 : grgit.describe(tags: true).split('-')[1])
 
