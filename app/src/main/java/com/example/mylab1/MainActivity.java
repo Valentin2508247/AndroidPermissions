@@ -13,8 +13,6 @@ import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-
     //private static final String READ_PHONE_STATE_PERMISSION = Manifest.permission.READ_PHONE_STATE;
     private static final int REQUEST_READ_PHONE_STATE = 10001;
 
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void SetId()
     {
-        TextView text = findViewById(R.id.textview);
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         String id = "";
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         {
 
         }
-
+        TextView text = findViewById(R.id.textview);
         text.setText("Device id is " + id);
 
     }
@@ -65,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission granted
                     SetId();
-                    TextView message = findViewById(R.id.message);
-                    message.setText("");
                 } else {
                     // permission denied
                     TextView message = findViewById(R.id.message);
@@ -75,5 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 return;
         }
     }
+
 
 }

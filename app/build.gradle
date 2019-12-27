@@ -26,13 +26,16 @@ android {
         //returns tag-commit_number-commit_hash if there was commits
         //othervise returns tag
 
+
+        def str = grgit.describe(tags:true)
+        new File(projectDir, "version.txt").text = str
+
         def patch = (grgit.describe(tags: true) == lastTagName ?
                 0 : grgit.describe(tags: true).split('-')[1])
 
 
         versionCode major.toInteger()*10000 + minor.toInteger() * 100 + patch.toInteger() + 1
         versionName "${major}.${minor}.${patch}"
-
 
         //new File(projectDir, "version.txt").text = """$major.$minor.$patch\n$versionCode\n$patch"""
 
@@ -66,3 +69,4 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
+
