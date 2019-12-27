@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int a = 5;
+
 
         TextView version = findViewById(R.id.version);
         version.setText("Current version: " + BuildConfig.VERSION_NAME);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             id = telephonyManager.getDeviceId();
-       }
+        }
         catch (SecurityException ex)
         {
 
